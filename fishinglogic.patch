@@ -1,0 +1,62 @@
+*** "/home/dlu/.steam/steam/steamapps/common/Hades II/Content/Scripts/FishingLogic.lua"	2024-05-16 15:53:10.279805691 -0400
+--- FishingLogic.lua	2024-05-17 14:33:51.950698487 -0400
+*************** function StartFishing( source, args )
+*** 152,158 ****
+  	InvalidateCheckpoint()
+  	FreezePlayerUnit( "Fishing", { DisableTray = true, DisableCodex = true } )
+  	CurrentRun.Hero.FishingInput = false
+! 	CurrentRun.Hero.FishingState = "TooEarly"
+  	local fishingFailed = false
+  	args.FishingAnimationPointId = SpawnObstacle({ Name = "BlankObstacle", DestinationId = args.FishingPointId, Group = GetGroupName({ Id = args.FishingPointId, DrawGroup = true }) })
+  	
+--- 152,158 ----
+  	InvalidateCheckpoint()
+  	FreezePlayerUnit( "Fishing", { DisableTray = true, DisableCodex = true } )
+  	CurrentRun.Hero.FishingInput = false
+! 	CurrentRun.Hero.FishingState = "Success"
+  	local fishingFailed = false
+  	args.FishingAnimationPointId = SpawnObstacle({ Name = "BlankObstacle", DestinationId = args.FishingPointId, Group = GetGroupName({ Id = args.FishingPointId, DrawGroup = true }) })
+  	
+*************** function StartFishing( source, args )
+*** 194,207 ****
+  		return
+  	end
+  
+! 	CurrentRun.Hero.FishingState = "TooLate"
+  	SetAnimation({ Name = "FishingBobberResurface", DestinationId = args.FishingAnimationPointId })
+  	wait( difficultyData.WayLateInterval, "Fishing" )
+  
+  	if CurrentRun.Hero.FishingInput then
+  		return
+  	end
+! 	CurrentRun.Hero.FishingState = "WayLate"
+  	thread( FishingWayLatePresentation )
+  	wait( difficultyData.GiveUpInterval, "Fishing" )
+  
+--- 194,207 ----
+  		return
+  	end
+  
+! 	-- CurrentRun.Hero.FishingState = "TooLate"
+  	SetAnimation({ Name = "FishingBobberResurface", DestinationId = args.FishingAnimationPointId })
+  	wait( difficultyData.WayLateInterval, "Fishing" )
+  
+  	if CurrentRun.Hero.FishingInput then
+  		return
+  	end
+! 	-- CurrentRun.Hero.FishingState = "WayLate"
+  	thread( FishingWayLatePresentation )
+  	wait( difficultyData.GiveUpInterval, "Fishing" )
+  
+*************** function CancelFishing()
+*** 251,254 ****
+  		killTaggedThreads( "FishingStartDelay")		
+  		UnfreezePlayerUnit("FishingStartUp")
+  	end
+! end
+\ No newline at end of file
+--- 251,254 ----
+  		killTaggedThreads( "FishingStartDelay")		
+  		UnfreezePlayerUnit("FishingStartUp")
+  	end
+! end

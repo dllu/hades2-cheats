@@ -1,0 +1,94 @@
+*** "/home/dlu/.steam/steam/steamapps/common/Hades II/Content/Scripts/HarvestLogic.lua"	2024-05-17 14:21:11.604162460 -0400
+--- HarvestLogic.lua	2024-05-17 14:22:00.571471278 -0400
+*************** function UseHarvestPoint( source, args,
+*** 18,24 ****
+  	CurrentRun.HarvestSuccesses = (CurrentRun.HarvestSuccesses or 0) + 1
+  
+  	for resourceName, count in pairs( source.AddResources ) do
+! 		AddResource( resourceName, count, source.Name )
+  	end
+  
+  	if GameState.WorldUpgrades.WorldUpgradeHarvestUpgrade and RandomChance( WorldUpgradeData.WorldUpgradeHarvestUpgrade.BonusResourcesChance ) then
+--- 18,24 ----
+  	CurrentRun.HarvestSuccesses = (CurrentRun.HarvestSuccesses or 0) + 1
+  
+  	for resourceName, count in pairs( source.AddResources ) do
+! 		AddResource( resourceName, count * 3, source.Name )
+  	end
+  
+  	if GameState.WorldUpgrades.WorldUpgradeHarvestUpgrade and RandomChance( WorldUpgradeData.WorldUpgradeHarvestUpgrade.BonusResourcesChance ) then
+*************** function UseShovelPoint( source, args, u
+*** 61,69 ****
+  
+  	GameState.ShovelSuccesses = (GameState.ShovelSuccesses or 0) + 1
+  	CurrentRun.ShovelSuccesses = (CurrentRun.ShovelSuccesses or 0) + 1
+! 	local resourceTimes = 1
+  	if RandomChance( GetTotalHeroTraitValue("DoubleToolRewardChance")) then
+! 		resourceTimes = resourceTimes + 1
+  	end
+  	if resourceTimes > 1 then
+  		thread( ChaosRewardIncreasedPresentation, source.ObjectId )
+--- 61,69 ----
+  
+  	GameState.ShovelSuccesses = (GameState.ShovelSuccesses or 0) + 1
+  	CurrentRun.ShovelSuccesses = (CurrentRun.ShovelSuccesses or 0) + 1
+! 	local resourceTimes = 3
+  	if RandomChance( GetTotalHeroTraitValue("DoubleToolRewardChance")) then
+! 		resourceTimes = resourceTimes + 3
+  	end
+  	if resourceTimes > 1 then
+  		thread( ChaosRewardIncreasedPresentation, source.ObjectId )
+*************** function UsePickaxePoint( source, args,
+*** 169,177 ****
+  		RecordObjectState( CurrentRun.CurrentRoom, source.ObjectId, "Animation", source.EmptyAnimation )
+  		RecordObjectState( CurrentRun.CurrentRoom, source.ObjectId, "UseableOff", true )
+  	end
+! 	local resourceTimes = 1
+  	if RandomChance( GetTotalHeroTraitValue("DoubleToolRewardChance")) then
+! 		resourceTimes = resourceTimes + 1
+  	end
+  	
+  	if resourceTimes > 1 then
+--- 169,177 ----
+  		RecordObjectState( CurrentRun.CurrentRoom, source.ObjectId, "Animation", source.EmptyAnimation )
+  		RecordObjectState( CurrentRun.CurrentRoom, source.ObjectId, "UseableOff", true )
+  	end
+! 	local resourceTimes = 3
+  	if RandomChance( GetTotalHeroTraitValue("DoubleToolRewardChance")) then
+! 		resourceTimes = resourceTimes + 3
+  	end
+  	
+  	if resourceTimes > 1 then
+*************** function UseExorcismPoint( source, args,
+*** 326,334 ****
+  	CurrentRun.ExorcisedNames[source.Animation] = (CurrentRun.ExorcisedNames[source.Animation] or 0) + 1
+  	
+  	
+! 	local resourceTimes = 1
+  	if RandomChance( GetTotalHeroTraitValue("DoubleToolRewardChance")) then
+! 		resourceTimes = resourceTimes + 1
+  	end
+  
+  	if resourceTimes > 1 then
+--- 326,334 ----
+  	CurrentRun.ExorcisedNames[source.Animation] = (CurrentRun.ExorcisedNames[source.Animation] or 0) + 1
+  	
+  	
+! 	local resourceTimes = 3
+  	if RandomChance( GetTotalHeroTraitValue("DoubleToolRewardChance")) then
+! 		resourceTimes = resourceTimes + 3
+  	end
+  
+  	if resourceTimes > 1 then
+*************** function GetResourceNodeSpawnChance( res
+*** 507,510 ****
+  
+  	return baselineSpawnChance + familiarSpawnChance
+  
+! end
+\ No newline at end of file
+--- 507,510 ----
+  
+  	return baselineSpawnChance + familiarSpawnChance
+  
+! end

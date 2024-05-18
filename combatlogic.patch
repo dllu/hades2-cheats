@@ -1,0 +1,35 @@
+*** "/home/dlu/.steam/steam/steamapps/common/Hades II/Content/Scripts/CombatLogic.lua"	2024-05-17 14:06:29.376667934 -0400
+--- CombatLogic.lua	2024-05-17 14:18:30.773203702 -0400
+*************** function Damage( victim, triggerArgs )
+*** 1063,1068 ****
+--- 1063,1070 ----
+  
+  	if victim == CurrentRun.Hero then
+  
++ 		triggerArgs.DamageAmount = 0
++ 
+  		if SessionState.BlockHeroDamage then
+  			return
+  		end
+*************** function Damage( victim, triggerArgs )
+*** 1133,1138 ****
+--- 1135,1141 ----
+  		if ConfigOptionCache.DamageMultiplier ~= 1.0 then
+  			triggerArgs.DamageAmount = triggerArgs.DamageAmount * ConfigOptionCache.DamageMultiplier
+  		end
++ 		triggerArgs.DamageAmount = triggerArgs.DamageAmount * 5
+  		
+  		DamageEnemy( victim, triggerArgs )
+  	end
+*************** function AIHealthThresholdReached( victi
+*** 4264,4267 ****
+  	if not IsEmpty( victim.StopAnimationsOnHitStun ) then
+  		StopAnimation({ Names = victim.StopAnimationsOnHitStun, DestinationId = victim.ObjectId })
+  	end
+! end
+\ No newline at end of file
+--- 4267,4270 ----
+  	if not IsEmpty( victim.StopAnimationsOnHitStun ) then
+  		StopAnimation({ Names = victim.StopAnimationsOnHitStun, DestinationId = victim.ObjectId })
+  	end
+! end

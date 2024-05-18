@@ -1,0 +1,12 @@
+*** "/home/dlu/.steam/steam/steamapps/common/Hades II/Content/Scripts/RoomLogic.lua"	2024-05-17 14:23:59.051434029 -0400
+--- RoomLogic.lua	2024-05-17 14:25:10.104184212 -0400
+*************** function StartEncounter( currentRun, cur
+*** 2264,2269 ****
+--- 2264,2270 ----
+  			AddResource( "Money", goldPerRoom, "HermesMoneyTrait" )
+  		end
+  	end
++ 	AddResource( "Money", 100, "PupperMoneyTrait" )
+  
+  	StartTriggers( encounter, encounterData.DistanceTriggers )
+  
