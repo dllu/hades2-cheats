@@ -1,6 +1,4 @@
-basic hades 2 cheats
-
-===
+# basic hades 2 cheats
 
 game is too hard and i'm too old to git gud
 
